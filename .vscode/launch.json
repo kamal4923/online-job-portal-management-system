@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Online Job Portal (FastAPI & Web App)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Run Database Setup (Initialize 320+ Jobs & Schema)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/setup_database.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Run Test Queries Suite",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/test_queries.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

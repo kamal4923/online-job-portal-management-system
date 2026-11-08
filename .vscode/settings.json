@@ -1,0 +1,9 @@
+{
+  "python.analysis.autoImportCompletions": true,
+  "files.associations": {
+    "*.sql": "sql",
+    "*.html": "html"
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+}
