@@ -266,7 +266,8 @@ Recruiters can open **Manage Applicants** from their dashboard. Accepting and re
 This repository is configured for Vercel's Python runtime and FastAPI preset.
 Import the repository into a Vercel project; Vercel will install the packages
 from `requirements.txt` and use `backend_app:app` as the application entrypoint.
-The project root must remain the repository root.
+The project root must remain the repository root. `vercel.json` explicitly
+includes the frontend and SQLite initialization files in the function bundle.
 
 The first API request on a new Vercel function instance creates the sample
 database under `/tmp`, including the seeded jobs. Vercel's filesystem is

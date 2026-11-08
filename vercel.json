@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "backend_app.py": {
+      "includeFiles": "{index.html,schema_sqlite.sql,setup_database.py,populate_300_jobs.py}"
+    }
+  }
+}
