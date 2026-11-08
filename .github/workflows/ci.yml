@@ -33,7 +33,6 @@ jobs:
           checks = {
               "/": lambda response: response.headers.get_content_type() == "text/html",
               "/docs": lambda response: response.headers.get_content_type() == "text/html",
-              "/api/jobs": lambda response: json.load(response)["total"] > 0,
           }
 
           for path, validate in checks.items():
@@ -48,5 +47,56 @@ jobs:
                           raise
                       time.sleep(1)
 
-          print("Web app, API docs, and jobs API smoke tests passed.")
+          def request_json(path, payload=None):
+              body = None if payload is None else json.dumps(payload).encode()
+              request = urllib.request.Request(
+                  base_url + path,
+                  data=body,
+                  headers={"Content-Type": "application/json"},
+                  method="GET" if payload is None else "POST",
+              )
+              with urllib.request.urlopen(request, timeout=10) as response:
+                  assert response.status == 200
+                  return json.load(response)
+
+          jobs = request_json("/api/jobs")
+          assert jobs["total"] >= 300 and len(jobs["jobs"]) >= 300, (
+              f"Expected at least 300 jobs, got {jobs['total']}"
+          )
+
+          applicants = request_json("/api/recruiter/jobs/1/applicants")["applicants"]
+          assert len(applicants) >= 2, "Expected seeded applicants for accept/reject checks"
+          accept_id, reject_id = [applicant["application_id"] for applicant in applicants[:2]]
+
+          accepted = request_json(
+              f"/api/recruiter/applications/{accept_id}/accept",
+              {
+                  "remarks": "CI acceptance test",
+                  "offered_ctc": 900000,
+                  "joining_date": "2026-12-01",
+                  "changed_by_user_id": 2,
+              },
+          )
+          rejected = request_json(
+              f"/api/recruiter/applications/{reject_id}/reject",
+              {
+                  "reason": "CI rejection test",
+                  "remarks": "CI test feedback",
+                  "changed_by_user_id": 2,
+              },
+          )
+          assert accepted["status"] == "accepted"
+          assert rejected["status"] == "rejected"
+
+          updated_applicants = request_json(
+              "/api/recruiter/jobs/1/applicants"
+          )["applicants"]
+          statuses = {
+              applicant["application_id"]: applicant["current_status"]
+              for applicant in updated_applicants
+          }
+          assert statuses[accept_id] == "accepted"
+          assert statuses[reject_id] == "rejected"
+
+          print("Web app, API docs, 320 jobs, and accept/reject API smoke tests passed.")
           PY

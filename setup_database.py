@@ -195,6 +195,14 @@ def init_database():
     conn.commit()
     print("[SUCCESS] Seed data loaded.")
 
+    conn.close()
+    from populate_300_jobs import populate
+    populate(DB_PATH)
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute("PRAGMA foreign_keys = ON;")
+    cursor = conn.cursor()
+
     # 3. Integrity Verification
     print("\n--> [3/4] Verifying Foreign Key Integrity and Table Row Counts...")
     fk_check = cursor.execute("PRAGMA foreign_key_check;").fetchall()

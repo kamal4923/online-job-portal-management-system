@@ -4,12 +4,14 @@ Populate 320+ Realistic Tech Jobs into Online Job Portal Database
 
 import sqlite3
 import random
+import os
 from datetime import date, timedelta
 
-DB_PATH = "job_portal.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "job_portal.db")
 
-def populate():
-    conn = sqlite3.connect(DB_PATH)
+def populate(db_path=DB_PATH):
+    conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON;")
     cursor = conn.cursor()
 
@@ -249,6 +251,7 @@ def populate():
     print(f"[SUCCESS] Total Job-Skill mappings tagged: {total_skills_tagged}")
 
     conn.close()
+    return total_jobs
 
 if __name__ == "__main__":
     populate()

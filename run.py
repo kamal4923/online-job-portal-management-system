@@ -4,6 +4,7 @@ Starts FastAPI REST Backend and serves the Frontend at http://localhost:8000
 """
 
 import os
+import sqlite3
 import uvicorn
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -21,6 +22,21 @@ def main():
         setup_database.init_database()
     else:
         print(f"[OK] Database verified at: {DB_PATH}")
+
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        job_count = conn.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+    finally:
+        conn.close()
+
+    if job_count < 300:
+        print(f"[INFO] Found {job_count} jobs; adding the demo job inventory...")
+        from populate_300_jobs import populate
+        job_count = populate(DB_PATH)
+
+    if job_count < 300:
+        raise RuntimeError(f"Job inventory initialization failed: found only {job_count} jobs.")
+    print(f"[OK] Job inventory verified: {job_count} jobs available.")
 
     print("\nStarting FastAPI Application Server...")
     print("--> Web Application URL: http://localhost:8000")
