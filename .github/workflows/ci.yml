@@ -25,6 +25,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python - <<'PY'
           import json
+          from pathlib import Path
           import time
           import urllib.error
           import urllib.request
@@ -60,8 +61,8 @@ jobs:
                   return json.load(response)
 
           jobs = request_json("/api/jobs")
-          assert jobs["total"] >= 300 and len(jobs["jobs"]) >= 300, (
-              f"Expected at least 300 jobs, got {jobs['total']}"
+          assert jobs["total"] >= 500 and len(jobs["jobs"]) >= 500, (
+              f"Expected at least 500 jobs, got {jobs['total']}"
           )
 
           applicants = request_json("/api/recruiter/jobs/1/applicants")["applicants"]
@@ -98,5 +99,15 @@ jobs:
           assert statuses[accept_id] == "accepted"
           assert statuses[reject_id] == "rejected"
 
-          print("Web app, API docs, 320 jobs, and accept/reject API smoke tests passed.")
+          frontend = Path("index.html").read_text(encoding="utf-8")
+          for feature in (
+              'id="view-recruiter-accept-application"',
+              'id="view-recruiter-reject-application"',
+              "openAcceptApplicationPage",
+              "openRejectApplicationPage",
+              "const JOBS_PER_PAGE = 24",
+          ):
+              assert feature in frontend, f"Missing frontend feature: {feature}"
+
+          print("Web app, API docs, 500 jobs, dedicated action pages, and accept/reject API checks passed.")
           PY

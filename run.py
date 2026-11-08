@@ -29,12 +29,12 @@ def main():
     finally:
         conn.close()
 
-    if job_count < 300:
+    if job_count < 500:
         print(f"[INFO] Found {job_count} jobs; adding the demo job inventory...")
         from populate_300_jobs import populate
         job_count = populate(DB_PATH)
 
-    if job_count < 300:
+    if job_count < 500:
         raise RuntimeError(f"Job inventory initialization failed: found only {job_count} jobs.")
     print(f"[OK] Job inventory verified: {job_count} jobs available.")
 

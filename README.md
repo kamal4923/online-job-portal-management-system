@@ -234,12 +234,12 @@ erDiagram
 
 This project includes a standalone SQLite engine that runs immediately without installing or configuring external database servers.
 
-### Step 1: Initialize the Database and 320-Job Demo Inventory
+### Step 1: Initialize the Database and 500-Job Demo Inventory
 ```bash
 python -m pip install -r requirements.txt
 python setup_database.py
 ```
-*Creates `job_portal.db`, loads the schema and sample records, adds 320 realistic job listings, checks foreign keys, and prints analytical KPI reports. The launcher also fills in the job inventory on an existing database if fewer than 300 jobs are present.*
+*Creates `job_portal.db`, loads the schema and sample records, adds 500 realistic job listings, checks foreign keys, and prints analytical KPI reports. The launcher also fills in the job inventory on an existing database if it has fewer than 500 jobs.*
 
 ### Step 2: Run Unit Tests
 ```bash
@@ -251,13 +251,13 @@ python test_queries.py
 ```bash
 python run.py
 ```
-Open **`http://localhost:8000`** in your browser. The jobs page shows 12 listings per page; use its pagination controls to browse the full inventory. The API documentation is at **`http://localhost:8000/docs`**.
+Open **`http://localhost:8000`** in your browser. The jobs page shows 24 listings per page; use the visible pagination controls to browse the full inventory. The API documentation is at **`http://localhost:8000/docs`**.
 
 This is a Python application, not a Node.js project; there is no `package.json`, so `npm start` is not a supported startup command. To run the standalone standard-library dashboard instead, use `python server.py`.
 
 The SQLite database is generated locally and is not included in the repository. On first launch, `python run.py` initializes it automatically. GitHub stores the source code; to make the app publicly accessible as a hosted website, deploy it to a Python web host.
 
-Recruiters can open **Manage Applicants** from their dashboard and accept candidates (with offer details) or reject them (with a reason and feedback). Both actions update application history and notify the job seeker.
+Recruiters can open **Manage Applicants** from their dashboard. Accepting and rejecting candidates open dedicated full-page forms for offer details or rejection feedback. Both actions update application history and notify the job seeker.
 
 ---
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Job Portal Management System | Full-Stack SQL Architecture (320+ Live Vacancies)</title>
+  <title>Online Job Portal Management System | 500+ Live Vacancies</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Mermaid.js CDN for ER Diagram -->
@@ -101,7 +101,7 @@
                 Online Job Portal Management System
               </span>
               <span class="text-[10px] font-bold px-2 py-0.5 rounded-full badge-purple border border-purple-200 shadow-xs">
-                320+ Live Vacancies
+                500+ Live Vacancies
               </span>
             </div>
             <p class="text-[10px] text-slate-500 font-medium">Enterprise Relational SQL Architecture &bull; Recruiter SaaS Platform</p>
@@ -110,7 +110,7 @@
 
         <!-- Center Navigation Tabs -->
         <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold text-slate-600 bg-slate-100/70 p-1 rounded-xl border border-slate-200">
-          <button onclick="navigate('seeker-jobs')" id="nav-btn-seeker-jobs" class="px-3 py-1.5 rounded-lg hover:text-blue-600 transition">🔍 Browse Jobs (320+)</button>
+          <button onclick="navigate('seeker-jobs')" id="nav-btn-seeker-jobs" class="px-3 py-1.5 rounded-lg hover:text-blue-600 transition">🔍 Browse Jobs (500+)</button>
           <button onclick="navigate('seeker-applications')" id="nav-btn-seeker-applications" class="px-3 py-1.5 rounded-lg hover:text-blue-600 transition">📑 My Applications</button>
           <button onclick="navigate('subscription-plans')" id="nav-btn-subscription-plans" class="px-3 py-1.5 rounded-lg text-purple-700 hover:text-purple-900 transition">💎 Premium Pricing</button>
           <button onclick="navigate('sql-studio')" id="nav-btn-sql-studio" class="px-3 py-1.5 rounded-lg hover:text-blue-600 transition">⚡ SQL Studio</button>
@@ -164,7 +164,7 @@
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
     <!-- ===================================================================== -->
-    <!-- VIEW: BROWSE JOBS (HERO & 320+ VACANCIES)                              -->
+    <!-- VIEW: BROWSE JOBS (HERO & 500+ VACANCIES)                              -->
     <!-- ===================================================================== -->
     <div id="view-seeker-jobs" class="view-panel space-y-6">
       
@@ -173,7 +173,7 @@
         <div class="max-w-3xl relative z-10">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold mb-4">
             <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-            <span>Over 320+ Active Vacancies across 25 Top Enterprises</span>
+            <span>Over 500 Active Vacancies across 25 Top Enterprises</span>
           </div>
 
           <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
@@ -244,13 +244,13 @@
         <div>
           <div class="flex items-center space-x-2">
             <h2 class="text-lg font-black text-slate-900 tracking-tight" id="jobs-count-heading">
-              Live Vacancies (320 Active Positions)
+              Live Vacancies (500 Active Positions)
             </h2>
             <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-xs flex items-center space-x-1">
               <span>⚡</span><span id="speed-timing">1.8ms</span><span>• Indexed WAL</span>
             </span>
           </div>
-          <p class="text-xs text-slate-500" id="jobs-filter-status">Showing page 1 of 27</p>
+          <p class="text-xs text-slate-500" id="jobs-filter-status">Showing jobs 1 to 24 of 500</p>
         </div>
 
         <!-- Page Switcher -->
@@ -258,26 +258,26 @@
           <button onclick="prevPage()" id="btn-prev-page" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-700 font-semibold hover:bg-slate-50 disabled:opacity-50">
             ← Previous
           </button>
-          <span class="font-bold text-slate-800 px-2" id="pagination-label">Page 1 / 27</span>
+          <span class="font-bold text-slate-800 px-2" id="pagination-label">Page 1 / 21</span>
           <button onclick="nextPage()" id="btn-next-page" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-700 font-semibold hover:bg-slate-50">
             Next →
           </button>
         </div>
       </div>
 
-      <!-- Jobs Card Grid (Loaded with 320 items) -->
+      <!-- Jobs Card Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="jobs-card-grid">
         <!-- Rendered dynamically -->
       </div>
 
       <!-- Bottom Pagination -->
       <div class="flex justify-center items-center space-x-2 pt-6">
-        <button onclick="prevPage()" class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-50">
-          ← Previous 12 Jobs
+        <button onclick="prevPage()" id="btn-prev-page-bottom" class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-50" disabled>
+          ← Previous 24 Jobs
         </button>
-        <span class="text-xs font-semibold text-slate-500 px-4" id="pagination-bottom-label">Showing 1 to 12 of 320</span>
-        <button onclick="nextPage()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow">
-          Next 12 Jobs →
+        <span class="text-xs font-semibold text-slate-500 px-4" id="pagination-bottom-label">Showing 1 to 24 of 500</span>
+        <button onclick="nextPage()" id="btn-next-page-bottom" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow">
+          Next 24 Jobs →
         </button>
       </div>
 
@@ -593,6 +593,92 @@
       </div>
     </div>
 
+    <!-- Dedicated acceptance form -->
+    <div id="view-recruiter-accept-application" class="view-panel hidden space-y-6">
+      <section class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-3xl border border-emerald-200 shadow-lg">
+        <button onclick="navigate('recruiter-applicants')" class="text-xs font-bold text-blue-600 hover:underline mb-5">
+          ← Back to applicants
+        </button>
+        <div class="flex items-start gap-4 mb-6">
+          <div class="w-12 h-12 shrink-0 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xl">✓</div>
+          <div>
+            <h2 class="text-2xl font-black text-slate-900">Accept application & extend offer</h2>
+            <p class="text-sm text-slate-500 mt-1">Review the candidate and offer details. The candidate will be notified after confirmation.</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl mb-6">
+          <div class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Candidate and vacancy</div>
+          <div class="text-lg font-black text-slate-900 mt-1" id="accept-page-candidate-name">Candidate Name</div>
+          <div class="text-sm text-slate-600" id="accept-page-job-title">Position</div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="accept-page-ctc" class="block text-sm font-bold text-slate-700 mb-1.5">Offered annual CTC (₹)</label>
+            <input type="number" id="accept-page-ctc" min="0" step="1000" class="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+          <div>
+            <label for="accept-page-joining-date" class="block text-sm font-bold text-slate-700 mb-1.5">Proposed joining date</label>
+            <input type="date" id="accept-page-joining-date" class="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+          <div class="sm:col-span-2">
+            <label for="accept-page-remarks" class="block text-sm font-bold text-slate-700 mb-1.5">Offer remarks and welcome note</label>
+            <textarea id="accept-page-remarks" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none">Congratulations! We are delighted to accept your application and offer you the position. Welcome aboard!</textarea>
+          </div>
+        </div>
+
+        <div class="flex flex-col-reverse sm:flex-row gap-3 justify-end mt-6">
+          <button type="button" onclick="navigate('recruiter-applicants')" class="px-5 py-3 border border-slate-300 text-slate-700 font-bold text-sm rounded-xl hover:bg-slate-50">Cancel</button>
+          <button type="button" onclick="confirmAcceptApplication()" class="px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm rounded-xl shadow transition">Confirm acceptance & extend offer</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Dedicated rejection form -->
+    <div id="view-recruiter-reject-application" class="view-panel hidden space-y-6">
+      <section class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-3xl border border-rose-200 shadow-lg">
+        <button onclick="navigate('recruiter-applicants')" class="text-xs font-bold text-blue-600 hover:underline mb-5">
+          ← Back to applicants
+        </button>
+        <div class="flex items-start gap-4 mb-6">
+          <div class="w-12 h-12 shrink-0 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center font-black text-xl">✕</div>
+          <div>
+            <h2 class="text-2xl font-black text-slate-900">Reject application</h2>
+            <p class="text-sm text-slate-500 mt-1">Provide a reason and respectful feedback. The candidate will be notified after confirmation.</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-rose-50 border border-rose-200 rounded-2xl mb-6">
+          <div class="text-xs font-bold text-rose-800 uppercase tracking-wider">Candidate and vacancy</div>
+          <div class="text-lg font-black text-slate-900 mt-1" id="reject-page-candidate-name">Candidate Name</div>
+          <div class="text-sm text-slate-600" id="reject-page-job-title">Position</div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label for="reject-page-reason" class="block text-sm font-bold text-slate-700 mb-1.5">Reason for rejection</label>
+            <select id="reject-page-reason" class="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm font-medium text-slate-800 focus:ring-2 focus:ring-rose-500 focus:outline-none">
+              <option value="Skill Set Alignment">Skill Set Alignment (Required key technologies missing)</option>
+              <option value="Experience Requirement">Experience Requirement (Position requires more specialized tenure)</option>
+              <option value="Position Filled">Position Already Filled by Earlier Candidate</option>
+              <option value="Salary Expectation">Salary Expectation Outside Department Budget</option>
+              <option value="General Candidate Fit">General Profile Fit / Future Talent Pool</option>
+            </select>
+          </div>
+          <div>
+            <label for="reject-page-remarks" class="block text-sm font-bold text-slate-700 mb-1.5">Feedback for the candidate</label>
+            <textarea id="reject-page-remarks" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm text-slate-700 focus:ring-2 focus:ring-rose-500 focus:outline-none">Thank you for taking the time to apply. While your qualifications are impressive, we have chosen to move forward with other candidates whose profiles more closely match our immediate requirements.</textarea>
+          </div>
+        </div>
+
+        <div class="flex flex-col-reverse sm:flex-row gap-3 justify-end mt-6">
+          <button type="button" onclick="navigate('recruiter-applicants')" class="px-5 py-3 border border-slate-300 text-slate-700 font-bold text-sm rounded-xl hover:bg-slate-50">Cancel</button>
+          <button type="button" onclick="confirmRejectApplication()" class="px-5 py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-sm rounded-xl shadow transition">Confirm rejection</button>
+        </div>
+      </section>
+    </div>
+
     <!-- ===================================================================== -->
     <!-- VIEW: SUBSCRIPTION PLANS & UPGRADE (RAZORPAY SIMULATION)              -->
     <!-- ===================================================================== -->
@@ -760,7 +846,7 @@
           <div class="flex items-center space-x-2">
             <label class="text-xs font-bold text-slate-700">Select Table:</label>
             <select id="table-select" onchange="loadTableData(this.value)" class="text-xs font-bold border border-slate-300 rounded-xl px-3 py-2 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="jobs">jobs (320 Active Vacancies)</option>
+              <option value="jobs">jobs (500 Active Vacancies)</option>
               <option value="companies">companies (25 Organizations)</option>
               <option value="users">users (Accounts & Roles)</option>
               <option value="job_seekers">job_seekers (Talent Profiles)</option>
@@ -818,7 +904,7 @@
         </div>
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
           <div class="text-[10px] font-black text-slate-400 uppercase tracking-wider">Active Vacancies</div>
-          <div class="text-2xl font-black text-emerald-700 mt-1" id="admin-jobs-count">320</div>
+          <div class="text-2xl font-black text-emerald-700 mt-1" id="admin-jobs-count">500</div>
         </div>
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
           <div class="text-[10px] font-black text-slate-400 uppercase tracking-wider">Applications</div>
@@ -1063,114 +1149,6 @@ erDiagram
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- MODAL: ACCEPT APPLICATION & RELEASE OFFER                                 -->
-  <!-- ========================================================================= -->
-  <div id="modal-accept-application" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-lg w-full p-6 animate-scale-up">
-      <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-sm">
-            ✓
-          </div>
-          <div>
-            <h3 class="text-base font-extrabold text-slate-900">Accept Candidate & Extend Offer</h3>
-            <p class="text-xs text-slate-500">Official employment selection and candidate notification</p>
-          </div>
-        </div>
-        <button onclick="closeModal('modal-accept-application')" class="text-slate-400 hover:text-slate-700 text-lg">&times;</button>
-      </div>
-
-      <div class="space-y-4">
-        <div class="p-3 bg-emerald-50/70 border border-emerald-200/80 rounded-2xl">
-          <div class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">Candidate & Job Vacancy</div>
-          <div class="text-sm font-black text-slate-900 mt-0.5" id="accept-modal-candidate-name">Candidate Name</div>
-          <div class="text-xs text-slate-600" id="accept-modal-job-title">Position: Full Stack Developer</div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Offered Annual CTC (₹)</label>
-            <input type="number" id="accept-modal-ctc" value="950000" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Proposed Joining Date</label>
-            <input type="date" id="accept-modal-joining-date" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500">
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Offer Remarks & Welcome Note</label>
-          <textarea id="accept-modal-remarks" rows="3" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs text-slate-700 focus:ring-2 focus:ring-emerald-500" placeholder="Congratulate the candidate and provide joining instructions...">Congratulations! We are delighted to accept your application and offer you the position. Welcome aboard!</textarea>
-        </div>
-
-        <div class="flex space-x-2 pt-2">
-          <button type="button" onclick="closeModal('modal-accept-application')" class="flex-1 py-2.5 border border-slate-200 text-slate-600 font-bold text-xs rounded-xl hover:bg-slate-50">
-            Cancel
-          </button>
-          <button type="button" onclick="confirmAcceptApplication()" class="flex-1 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-500/20 transition flex items-center justify-center space-x-1.5">
-            <span>🎉</span>
-            <span>Confirm & Extend Offer</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- MODAL: REJECT APPLICATION                                                 -->
-  <!-- ========================================================================= -->
-  <div id="modal-reject-application" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-lg w-full p-6 animate-scale-up">
-      <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-black text-sm">
-            ✕
-          </div>
-          <div>
-            <h3 class="text-base font-extrabold text-slate-900">Reject Candidate Application</h3>
-            <p class="text-xs text-slate-500">Send respectful closing feedback and update application pipeline</p>
-          </div>
-        </div>
-        <button onclick="closeModal('modal-reject-application')" class="text-slate-400 hover:text-slate-700 text-lg">&times;</button>
-      </div>
-
-      <div class="space-y-4">
-        <div class="p-3 bg-rose-50/70 border border-rose-200/80 rounded-2xl">
-          <div class="text-[11px] font-bold text-rose-800 uppercase tracking-wider">Candidate & Job Vacancy</div>
-          <div class="text-sm font-black text-slate-900 mt-0.5" id="reject-modal-candidate-name">Candidate Name</div>
-          <div class="text-xs text-slate-600" id="reject-modal-job-title">Position: Full Stack Developer</div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Reason for Rejection</label>
-          <select id="reject-modal-reason" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:ring-2 focus:ring-rose-500">
-            <option value="Skill Set Alignment">Skill Set Alignment (Required key technologies missing)</option>
-            <option value="Experience Requirement">Experience Requirement (Position requires more specialized tenure)</option>
-            <option value="Position Filled">Position Already Filled by Earlier Candidate</option>
-            <option value="Salary Expectation">Salary Expectation Outside Department Budget</option>
-            <option value="General Candidate Fit">General Profile Fit / Future Talent Pool</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Feedback Remarks (Sent to Candidate)</label>
-          <textarea id="reject-modal-remarks" rows="3" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs text-slate-700 focus:ring-2 focus:ring-rose-500">Thank you for taking the time to apply. While your qualifications are impressive, we have chosen to move forward with other candidates whose profiles more closely match our immediate requirements.</textarea>
-        </div>
-
-        <div class="flex space-x-2 pt-2">
-          <button type="button" onclick="closeModal('modal-reject-application')" class="flex-1 py-2.5 border border-slate-200 text-slate-600 font-bold text-xs rounded-xl hover:bg-slate-50">
-            Cancel
-          </button>
-          <button type="button" onclick="confirmRejectApplication()" class="flex-1 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-rose-500/20 transition flex items-center justify-center space-x-1.5">
-            <span>✕</span>
-            <span>Confirm Rejection</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -1178,7 +1156,7 @@ erDiagram
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
         <span class="font-semibold text-slate-700">Online Job Portal Management System</span>
         <span>&bull;</span>
-        <span>320+ Live Database Records</span>
+        <span>500+ Live Job Listings</span>
       </div>
       <div>
         <span>Normalized MySQL/SQLite 3NF Schema &bull; Recruiter SaaS</span>
@@ -1198,7 +1176,7 @@ erDiagram
     let currentUser = null;
     let cachedJobs = [];
     let currentPage = 1;
-    const JOBS_PER_PAGE = 12;
+    const JOBS_PER_PAGE = 24;
     let pendingPurchasePlanId = null;
 
     // View Routing
@@ -1330,7 +1308,7 @@ erDiagram
         roleBadge.className = 'text-[10px] font-bold text-blue-600';
         
         roleNav.innerHTML = `
-          <button onclick="navigate('seeker-jobs')" class="font-bold text-blue-600 hover:text-blue-800">🔍 Browse 320+ Jobs</button>
+          <button onclick="navigate('seeker-jobs')" class="font-bold text-blue-600 hover:text-blue-800">🔍 Browse 500+ Jobs</button>
           <button onclick="navigate('seeker-applications')" class="text-slate-600 hover:text-blue-600">📑 My Applications Pipeline</button>
           <button onclick="navigate('sql-studio')" class="text-slate-600 hover:text-blue-600">⚡ SQL Studio</button>
           <button onclick="navigate('table-explorer')" class="text-slate-600 hover:text-blue-600">🗄️ Database Tables</button>
@@ -1529,13 +1507,17 @@ erDiagram
       const startIndex = (currentPage - 1) * JOBS_PER_PAGE;
       const endIndex = Math.min(startIndex + JOBS_PER_PAGE, total);
       const pageJobs = cachedJobs.slice(startIndex, endIndex);
+      const previousDisabled = currentPage === 1;
+      const nextDisabled = currentPage === totalPages;
 
       document.getElementById('pagination-label').innerText = `Page ${currentPage} / ${totalPages}`;
       document.getElementById('jobs-filter-status').innerText = `Showing jobs ${startIndex + 1} to ${endIndex} of ${total}`;
       document.getElementById('pagination-bottom-label').innerText = `Showing ${startIndex + 1} to ${endIndex} of ${total} positions`;
 
-      document.getElementById('btn-prev-page').disabled = currentPage === 1;
-      document.getElementById('btn-next-page').disabled = currentPage === totalPages;
+      document.getElementById('btn-prev-page').disabled = previousDisabled;
+      document.getElementById('btn-next-page').disabled = nextDisabled;
+      document.getElementById('btn-prev-page-bottom').disabled = previousDisabled;
+      document.getElementById('btn-next-page-bottom').disabled = nextDisabled;
 
       pageJobs.forEach(job => {
         const card = document.createElement('div');
@@ -1822,22 +1804,22 @@ erDiagram
     // -------------------------------------------------------------------------
     let activeActionApp = { appId: null, candidateName: '', jobTitle: '', jobId: null };
 
-    function openAcceptModal(appId, candidateName, jobTitle, expectedSalary, jobId) {
+    function openAcceptApplicationPage(appId, candidateName, jobTitle, expectedSalary, jobId) {
       activeActionApp = { appId, candidateName, jobTitle, jobId };
-      document.getElementById('accept-modal-candidate-name').innerText = candidateName;
-      document.getElementById('accept-modal-job-title').innerText = `Target Vacancy: ${jobTitle}`;
-      document.getElementById('accept-modal-ctc').value = expectedSalary || 950000;
+      document.getElementById('accept-page-candidate-name').innerText = candidateName;
+      document.getElementById('accept-page-job-title').innerText = `Target Vacancy: ${jobTitle}`;
+      document.getElementById('accept-page-ctc').value = expectedSalary || 950000;
       
       const d = new Date();
       d.setDate(d.getDate() + 30);
-      document.getElementById('accept-modal-joining-date').value = d.toISOString().split('T')[0];
-      document.getElementById('modal-accept-application').classList.remove('hidden');
+      document.getElementById('accept-page-joining-date').value = d.toISOString().split('T')[0];
+      navigate('recruiter-accept-application');
     }
 
     async function confirmAcceptApplication() {
-      const ctc = parseFloat(document.getElementById('accept-modal-ctc').value) || 0;
-      const joiningDate = document.getElementById('accept-modal-joining-date').value;
-      const remarks = document.getElementById('accept-modal-remarks').value.trim();
+      const ctc = parseFloat(document.getElementById('accept-page-ctc').value) || 0;
+      const joiningDate = document.getElementById('accept-page-joining-date').value;
+      const remarks = document.getElementById('accept-page-remarks').value.trim();
 
       try {
         const res = await fetch(`${API_BASE}/api/recruiter/applications/${activeActionApp.appId}/accept`, {
@@ -1853,7 +1835,6 @@ erDiagram
         const data = await res.json();
         if (!res.ok) throw new Error(data.detail || 'Failed to accept application');
 
-        closeModal('modal-accept-application');
         alert(`🎉 Success! Application for ${activeActionApp.candidateName} has been ACCEPTED & offer released!`);
         viewJobApplicants(activeActionApp.jobId, activeActionApp.jobTitle);
       } catch (err) {
@@ -1861,16 +1842,16 @@ erDiagram
       }
     }
 
-    function openRejectModal(appId, candidateName, jobTitle, jobId) {
+    function openRejectApplicationPage(appId, candidateName, jobTitle, jobId) {
       activeActionApp = { appId, candidateName, jobTitle, jobId };
-      document.getElementById('reject-modal-candidate-name').innerText = candidateName;
-      document.getElementById('reject-modal-job-title').innerText = `Target Vacancy: ${jobTitle}`;
-      document.getElementById('modal-reject-application').classList.remove('hidden');
+      document.getElementById('reject-page-candidate-name').innerText = candidateName;
+      document.getElementById('reject-page-job-title').innerText = `Target Vacancy: ${jobTitle}`;
+      navigate('recruiter-reject-application');
     }
 
     async function confirmRejectApplication() {
-      const reason = document.getElementById('reject-modal-reason').value;
-      const remarks = document.getElementById('reject-modal-remarks').value.trim();
+      const reason = document.getElementById('reject-page-reason').value;
+      const remarks = document.getElementById('reject-page-remarks').value.trim();
 
       try {
         const res = await fetch(`${API_BASE}/api/recruiter/applications/${activeActionApp.appId}/reject`, {
@@ -1885,7 +1866,6 @@ erDiagram
         const data = await res.json();
         if (!res.ok) throw new Error(data.detail || 'Failed to reject application');
 
-        closeModal('modal-reject-application');
         alert(`✓ Application status updated to Rejected for ${activeActionApp.candidateName}.`);
         viewJobApplicants(activeActionApp.jobId, activeActionApp.jobTitle);
       } catch (err) {
@@ -1940,7 +1920,7 @@ erDiagram
             actionButtons = `
               <div class="flex items-center justify-end space-x-2">
                 <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200">✓ Offer Extended</span>
-                <button onclick="openRejectModal(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${jobId})" class="text-[11px] text-slate-400 hover:text-rose-600 font-medium underline">
+                <button onclick="openRejectApplicationPage(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${jobId})" class="text-[11px] text-slate-400 hover:text-rose-600 font-medium underline">
                   Revoke/Reject
                 </button>
               </div>
@@ -1949,7 +1929,7 @@ erDiagram
             actionButtons = `
               <div class="flex items-center justify-end space-x-2">
                 <span class="px-2.5 py-1 rounded-lg text-xs font-medium text-rose-600 bg-rose-50 border border-rose-200">Not Selected</span>
-                <button onclick="openAcceptModal(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${expectedSalary}, ${jobId})" class="text-[11px] text-blue-600 hover:underline font-bold">
+                <button onclick="openAcceptApplicationPage(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${expectedSalary}, ${jobId})" class="text-[11px] text-blue-600 hover:underline font-bold">
                   Reconsider/Accept
                 </button>
               </div>
@@ -1957,10 +1937,10 @@ erDiagram
           } else {
             actionButtons = `
               <div class="flex items-center justify-end space-x-1.5 flex-wrap gap-y-1">
-                <button onclick="openAcceptModal(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${expectedSalary}, ${jobId})" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black shadow-sm shadow-emerald-600/20 transition flex items-center space-x-1">
+                <button onclick="openAcceptApplicationPage(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${expectedSalary}, ${jobId})" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black shadow-sm shadow-emerald-600/20 transition flex items-center space-x-1">
                   <span>✓</span><span>Accept (Offer)</span>
                 </button>
-                <button onclick="openRejectModal(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${jobId})" class="px-3 py-1.5 bg-white hover:bg-rose-50 text-rose-600 border border-rose-300 rounded-xl text-xs font-bold transition flex items-center space-x-1">
+                <button onclick="openRejectApplicationPage(${ap.application_id}, '${escapedName}', '${escapedTitle}', ${jobId})" class="px-3 py-1.5 bg-white hover:bg-rose-50 text-rose-600 border border-rose-300 rounded-xl text-xs font-bold transition flex items-center space-x-1">
                   <span>✕</span><span>Reject</span>
                 </button>
                 <button onclick="updateStatusAction(${ap.application_id}, 'shortlisted', ${jobId}, '${escapedTitle}')" class="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl text-xs font-bold transition">
@@ -2366,7 +2346,7 @@ ORDER BY at.changed_at ASC;`
 
     // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
-      // Default view: Browse 320+ jobs so evaluator immediately sees the active portal!
+      // Default view: Browse all available jobs.
       navigate('seeker-jobs');
     });
   </script>

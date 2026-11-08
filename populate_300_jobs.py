@@ -1,6 +1,4 @@
-"""
-Populate 320+ Realistic Tech Jobs into Online Job Portal Database
-"""
+"""Populate 500 realistic tech jobs in the online job portal database."""
 
 import sqlite3
 import random
@@ -148,7 +146,7 @@ def populate(db_path=DB_PATH):
     skill_id_map = {name: sid for sid, name in all_skills}
     skill_ids_pool = [sid for sid, _ in all_skills]
 
-    print("--> Generating 320+ Tech Jobs...")
+    print("--> Generating 500+ Tech Jobs...")
     # Job title templates with typical skill requirements
     templates = [
         ("Full Stack Python Developer", ["Python", "Django", "SQL / MySQL", "REST API Design", "React.js"], 800000, 1600000, "Full-time", "Mid"),
@@ -193,7 +191,7 @@ def populate(db_path=DB_PATH):
 
     # Current job count
     curr_jobs = cursor.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
-    target_jobs = 320
+    target_jobs = 500
     needed = target_jobs - curr_jobs
 
     print(f"Currently have {curr_jobs} jobs. Adding {needed} more...")
