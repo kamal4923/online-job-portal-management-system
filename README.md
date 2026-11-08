@@ -261,6 +261,24 @@ Recruiters can open **Manage Applicants** from their dashboard. Accepting and re
 
 ---
 
+## Deploying to Vercel
+
+This repository is configured for Vercel's Python runtime and FastAPI preset.
+Import the repository into a Vercel project; Vercel will install the packages
+from `requirements.txt` and use `backend_app:app` as the application entrypoint.
+The project root must remain the repository root.
+
+The first API request on a new Vercel function instance creates the sample
+database under `/tmp`, including the seeded jobs. Vercel's filesystem is
+ephemeral, so database changes are not durable and may differ between function
+instances. This deployment is suitable for the demo; use a managed database
+and update the database connection code before using it for persistent,
+multi-user production data.
+
+For local development, continue to use `python run.py`.
+
+---
+
 ## 6. MySQL 8.0+ Production Deployment
 
 To deploy on a live MySQL server:

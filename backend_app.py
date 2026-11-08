@@ -7,6 +7,8 @@ import sqlite3
 import os
 import json
 import re
+import tempfile
+import threading
 from datetime import datetime, date, timedelta
 from typing import Optional, List
 from fastapi import FastAPI, HTTPException, Depends, Query, Request
@@ -17,7 +19,12 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, EmailStr
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "job_portal.db")
+ON_VERCEL = os.environ.get("VERCEL") == "1"
+DB_PATH = os.path.join(
+    tempfile.gettempdir() if ON_VERCEL else BASE_DIR,
+    "job_portal.db"
+)
+_db_initialization_lock = threading.Lock()
 
 app = FastAPI(
     title="Online Job Portal API",
@@ -36,6 +43,14 @@ app.add_middleware(
 )
 
 def get_db():
+    if ON_VERCEL:
+        with _db_initialization_lock:
+            if not os.path.exists(DB_PATH):
+                import setup_database
+
+                setup_database.DB_PATH = DB_PATH
+                setup_database.init_database()
+
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
